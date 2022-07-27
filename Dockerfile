@@ -84,7 +84,7 @@ RUN apk update && \
   apk add --no-cache musl-dev
 
 # Setup Rust with Wasm support
-RUN rustup target add wasm32-unknown-unknown
+RUN rustup target add wasm32-wasi
 
 # Add wasm-opt
 COPY --from=builder /usr/local/bin/wasm-opt /usr/local/bin

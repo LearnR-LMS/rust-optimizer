@@ -15,7 +15,7 @@ rustup toolchain list
 cargo --version
 
 # Delete already built artifacts
-rm -f target/wasm32-unknown-unknown/release/*.wasm
+rm -f target/wasm32-wasi/release/*.wasm
 
 # Build artifacts
 echo "Building artifacts in workspace..."
@@ -30,7 +30,7 @@ TMPARTIFACTS=$(mktemp -p "$(pwd)" -d artifacts.XXXXXX)
   INTERMEDIATE_SHAS="../artifacts/checksums_intermediate.txt"
   OPTIMIZED_SHAS="../artifacts/checksums.txt"
 
-  for WASM in ../target/wasm32-unknown-unknown/release/*.wasm; do
+  for WASM in ../target/wasm32-wasi/release/*.wasm; do
     BASENAME=$(basename "$WASM" .wasm)
     NAME=${BASENAME}${SUFFIX}
     OPTIMIZED_WASM=${NAME}.wasm

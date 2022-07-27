@@ -63,12 +63,7 @@ fn main() {
         println!("Building {:?} ...", contract);
 
         let mut child = Command::new(CARGO_PATH)
-            .args(&[
-                "build",
-                "--release",
-                "--target=wasm32-unknown-unknown",
-                "--locked",
-            ])
+            .args(&["build", "--release", "--target=wasm32-wasi", "--locked"])
             .env("RUSTFLAGS", "-C link-arg=-s")
             .current_dir(canonicalize(contract).unwrap())
             .spawn()
